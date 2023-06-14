@@ -1,2 +1,1 @@
-# Most-Wanted-Take2
-revision to Most Wanted project
+# MostWanted_FSF_JS_Starter
