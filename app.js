@@ -78,17 +78,17 @@ function searchByTraits(people){
         case 'gender':
             results = searchByGender(people);
             break;
-        //case 'height':
-            //results = searchByHeight(people);
+        case 'height':
+            results = searchByHeight(people);
             break;
-        //case 'weight':
-            //results = searchByWeight(people);
+        case 'weight':
+            results = searchByWeight(people);
             break;
-        //case 'eyeColor':
-            //results = searchByEyeColor(people);
+        case 'eyeColor':
+            results = searchByEyeColor(people);
             break;
-        //case 'occupation':
-            //results = searchByOccupation(people);
+        case 'occupation':
+            results = searchByOccupation(people);
             break;
         default:
             return searchByTraits(people);
@@ -98,10 +98,63 @@ function searchByTraits(people){
 }
 
 function searchByGender(people) {
-    let userInputGender = validatedPrompt("What is the person's gender?",
-    ['male','female']);
     
+    let userInputGender = prompt("What is the person's gender?");
+    let newArrayGender = people.filter(function (el) {
+        if(el.gender == userInputGender) {
+        return true;
+          }
+        });
+    return newArrayGender;
+}
+
+function searchByHeight(people) {
+    let userInputHeight = prompt("What is the person's height?");
+    let newArrayHeight = people.filter(function (el) {
+    if(el.height == userInputHeight) {
+      return true;
+    }
+  });
+
+  return newArrayHeight;
+}
+
+function searchByWeight(people) {
+    let userInputWeight = prompt("How much does the person weigh?");
+    let newArrayWeight = people.filter(function (el) {
+      if(el.weight == userInputWeight) {
+        return true;
+      }
+    });
+  
+    return newArrayWeight;
   }
+
+function searchByEyeColor(people){
+    let userInputEyeColor = prompt("What is the person's eye color?");
+    let newArrayEyeColor = people.filter(function (el) {
+      if(el.eyeColor == userInputEyeColor) {
+        return true;
+      }
+    });
+    return newArrayEyeColor;
+}
+
+function searchByOccupation(people){
+    let userInputOccupation = prompt("What is the person's occupation?").toLowerCase();
+    let newArrayOccupation = people.filter(function (el) {
+      if(el.occupation == userInputOccupation) {
+        return true;
+      }
+    });
+  
+    return newArrayOccupation;
+}
+
+
+  
+
+
 
 
 
