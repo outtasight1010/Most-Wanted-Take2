@@ -1,4 +1,5 @@
 
+
 function app(people) {
     displayWelcome();
     runSearchAndMenu(people);
@@ -50,6 +51,7 @@ function searchPeopleDataSet(people) {
     return results;
 }
 
+
 function searchById(people) {
     const idToSearchForString = prompt('Please enter the id of the person you are searching for.');
     const idToSearchForInt = parseInt(idToSearchForString);
@@ -64,6 +66,22 @@ function searchByName(people) {
     return fullNameSearchResults;
 }
 
+
+
+function displayPersonInfo(person) {
+    let personInfo = `First Name: ${person.firstName} \n`;
+    personInfo += `Last Name: ${person.lastName}\n`;
+    personInfo += `Gender: ${person.gender}\n`;
+    personInfo += `Birth Date: ${person.dob}\n`;
+    personInfo += `Height: ${person.height}in \n`;
+    personInfo += `Weight: ${person.weight}lbs \n`;
+    personInfo += `Occupation: ${person.occupation}\n`;
+    alert(personInfo);
+
+}
+
+
+
 function mainMenu(person, people) {
 
     const mainMenuUserActionChoice = validatedPrompt(
@@ -74,7 +92,7 @@ function mainMenu(person, people) {
     switch (mainMenuUserActionChoice) {
         case "info":
             //! TODO
-            // displayPersonInfo(person);
+            displayPersonInfo(person);
             break;
         case "family":
             //! TODO
