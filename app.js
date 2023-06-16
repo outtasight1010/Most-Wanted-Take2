@@ -96,7 +96,7 @@ function searchByTraits(people){
 
     return results;
 }
-
+// search by gender
 function searchByGender(people) {
     
     let userInputGender = prompt("What is the person's gender?");
@@ -107,7 +107,7 @@ function searchByGender(people) {
         });
     return newArrayGender;
 }
-
+// search by height
 function searchByHeight(people) {
     let userInputHeight = prompt("What is the person's height?");
     let newArrayHeight = people.filter(function (el) {
@@ -118,7 +118,7 @@ function searchByHeight(people) {
 
   return newArrayHeight;
 }
-
+// search by weight
 function searchByWeight(people) {
     let userInputWeight = prompt("How much does the person weigh?");
     let newArrayWeight = people.filter(function (el) {
@@ -129,7 +129,7 @@ function searchByWeight(people) {
   
     return newArrayWeight;
   }
-
+// search by eyeColor
 function searchByEyeColor(people){
     let userInputEyeColor = prompt("What is the person's eye color?");
     let newArrayEyeColor = people.filter(function (el) {
@@ -139,7 +139,7 @@ function searchByEyeColor(people){
     });
     return newArrayEyeColor;
 }
-
+// search by occupation
 function searchByOccupation(people){
     let userInputOccupation = prompt("What is the person's occupation?").toLowerCase();
     let newArrayOccupation = people.filter(function (el) {
@@ -172,6 +172,12 @@ function displayPersonInfo(person) {
     alert(personInfo);
 
 }
+// working on displayPeople function: used with finding family a/o descendants
+function displayPeople(people){
+    return people.map(function(person){
+    return person.firstName + " " + person.lastName;
+    }).join("\n");
+  }
 
 
 
