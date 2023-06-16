@@ -71,13 +71,15 @@ function searchByName(people) {
 function searchByTraits(people){
 
     const searchTraitType = validatedPrompt('Please enter the particular trait to search for.',
-	['gender','height','weight','eyeColor','occupation']);
+	['gender',"age",'height','weight','eyeColor','occupation']);
     
     let results = [];
     switch (searchTraitType) {
         case 'gender':
             results = searchByGender(people);
             break;
+        case 'age':
+            results = searchByAge(people);
         case 'height':
             results = searchByHeight(people);
             break;
@@ -107,6 +109,18 @@ function searchByGender(people) {
         });
     return newArrayGender;
 }
+// search by age
+function searchByAge(people){
+    let userInputAge = prompt("What is the person's age?");
+    let newArrayAge = people.filter(function (el) {
+      if(el.age == userInputAge) {
+        return true;
+      }
+    });
+  
+    return newArrayAge;
+}
+
 // search by height
 function searchByHeight(people) {
     let userInputHeight = prompt("What is the person's height?");
