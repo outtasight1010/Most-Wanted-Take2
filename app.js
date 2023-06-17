@@ -121,6 +121,32 @@ function searchByAge(people){
     return newArrayAge;
 }
 
+function addAgeToObject(people) {
+    people = people.map(function(el){
+    el.age = getAge(el.dob);
+        return el;
+    });
+        return people;
+  }
+  // converting dob to age so that function can be called
+  function getAge(dateElement) {
+    let date1 = new Date(getCurrentDate());
+    let date2 = new Date(dateElement);
+    let timeDifference = Math.abs(date2.getTime() - date1.getTime());
+    let differentDays = Math.ceil(timeDifference / (1000 * 3600 * 24));
+    let age = Math.floor((differentDays / 365));
+    return age;
+  }
+  /// dob conversion for userInput
+  function getCurrentDate() {
+    let date = new Date();
+    let currentDate = "";
+    currentDate += (date.getMonth() + 1) + "/";
+    currentDate += date.getDate() + "/";
+    currentDate += date.getFullYear();
+    return currentDate;
+  }
+
 // search by height
 function searchByHeight(people) {
     let userInputHeight = prompt("What is the person's height?");
