@@ -71,7 +71,7 @@ function searchByName(people) {
 function searchByTraits(people){
 
     const searchTraitType = validatedPrompt('Please enter the particular trait to search for.',
-	['gender',"age",'height','weight','eyeColor','occupation']);
+	['gender',"age",'height','weight','eyeColor','occupation']).toLowerCase();
     
     let results = [];
     switch (searchTraitType) {
