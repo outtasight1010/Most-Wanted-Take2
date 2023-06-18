@@ -71,7 +71,7 @@ function searchByName(people) {
 function searchByTraits(people){
 
     const searchTraitType = validatedPrompt('Please enter the particular trait to search for.',
-	['gender',"age",'height','weight','eyeColor','occupation']).toLowerCase();
+	['gender',"age",'height','weight','eyecolor','occupation']);
     
     let results = [];
     switch (searchTraitType) {
@@ -219,6 +219,60 @@ function displayPeople(people){
     }).join("\n");
   }
 
+  // searching for parents
+  function findParents(person, people) {
+    let newArrayParents = people.filter(function(el) {
+        if((person.parents).includes(el.id)) {
+          return true;
+        }
+    });
+    return newArrayParents;
+  }
+
+// searching for spouse
+  function findSpouse(person, people) {
+    let newArraySpouse = people.filter(function(el) {
+      if (el.currentSpouse == person.id) {
+        return true;
+      }
+    });
+    return newArraySpouse;
+  }
+
+  //searching for children
+  function findChildren(person, people) {
+    let newArrayChildren = people.filter(function(el) {
+      for (let i = 0; i < el.parents.length; i++)
+        if(el.parents[i] == person.id ) {
+          return true;
+      }
+    });
+    return newArrayChildren;
+  }
+// searching for possible siblings
+  function findSiblings(person, people) {
+    let newArraySiblings = people.filter(function (el) {
+      for (let i = 0; i < (el.parents).length; i++) {
+        if(person == el) {
+          return false;
+        };
+        if(person.parents.includes(el.parents[i]) ) {
+          return true;
+      };
+    };
+    });
+    return newArraySiblings[0];
+  }
+
+  // used to find possible descendants
+  function findDescendants(person, people) {
+    let descendants = findChildren(person, people);
+    for(let i = 0; i < descendants.length; i++) {
+      descendants = descendants.concat(findDescendants(descendants[i], people));
+    }
+    return descendants;
+  }
+  
 
 
 function mainMenu(person, people) {
@@ -236,12 +290,12 @@ function mainMenu(person, people) {
         case "family":
             //! TODO
             // let personFamily = findPersonFamily(person, people);
-            // displayPeople('Family', personFamily);
+            displayPeople('Family', personFamily);
             break;
         case "descendants":
             //! TODO
             // let personDescendants = findPersonDescendants(person, people);
-            // displayPeople('Descendants', personDescendants);
+            displayPeople('Descendants', personDescendants);
             break;
         case "quit":
             return;
