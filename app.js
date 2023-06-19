@@ -80,13 +80,14 @@ function searchByTraits(people){
             break;
         case 'age':
             results = searchByAge(people);
+            break;
         case 'height':
             results = searchByHeight(people);
             break;
         case 'weight':
             results = searchByWeight(people);
             break;
-        case 'eyeColor':
+        case 'eyecolor':
             results = searchByEyeColor(people);
             break;
         case 'occupation':
@@ -170,8 +171,8 @@ function searchByWeight(people) {
     return newArrayWeight;
   }
 // search by eyeColor
-function searchByEyeColor(people){
-    let userInputEyeColor = prompt("What is the person's eye color?");
+function searchByEyeColor(people) {
+    let userInputEyeColor = prompt("What is the person's eye color?").toLowerCase();
     let newArrayEyeColor = people.filter(function (el) {
       if(el.eyeColor == userInputEyeColor) {
         return true;
