@@ -220,7 +220,7 @@ function displayPeople(people){
   }
 
 
-  function findFamily (person, people) {
+  function findPersonFamily (person, people) {
     let newArray = [];
     let siblings = findSiblings(person, people);
     let children = findChildren(person, people);
@@ -300,10 +300,10 @@ function displayPeople(people){
   }
 
   // used to find possible descendants
-  function findDescendants(person, people) {
+  function findPersonDescendants(person, people) {
     let descendants = findChildren(person, people);
     for(let i = 0; i < descendants.length; i++) {
-      descendants = descendants.concat(findDescendants(descendants[i], people));
+      descendants = descendants.concat(findPersonDescendants(descendants[i], people));
     }
     return descendants;
   }
@@ -324,12 +324,12 @@ function mainMenu(person, people) {
             break;
         case "family":
             //! TODO
-            // let personFamily = findPersonFamily(person, people);
+            let personFamily = findPersonFamily(person, people);
             displayPeople('Family', personFamily);
             break;
         case "descendants":
             //! TODO
-            // let personDescendants = findPersonDescendants(person, people);
+            let personDescendants = findPersonDescendants(person, people);
             displayPeople('Descendants', personDescendants);
             break;
         case "quit":
