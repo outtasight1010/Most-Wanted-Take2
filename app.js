@@ -219,7 +219,7 @@ function displayPeople(people){
     }).join("\n");
   }
 
-
+// filtering through to find possible family members
   function findPersonFamily (person, people) {
     let newArray = [];
     let siblings = findSiblings(person, people);
@@ -299,7 +299,7 @@ function displayPeople(people){
     return newArraySiblings[0];
   }
 
-  // used to find possible descendants
+  // used to find possible descendants(children)
   function findPersonDescendants(person, people) {
     let descendants = findChildren(person, people);
     for(let i = 0; i < descendants.length; i++) {
