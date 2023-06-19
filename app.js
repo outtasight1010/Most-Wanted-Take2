@@ -219,6 +219,41 @@ function displayPeople(people){
     }).join("\n");
   }
 
+
+  function findFamily (person, people) {
+    let newArray = [];
+    let siblings = findSiblings(person, people);
+    let children = findChildren(person, people);
+    let spouse = findSpouse(person, people);
+    let parents = findParents(person, people);
+  
+    if (siblings != null) {
+      for(let i = 0; i < siblings.length; i ++){
+        newArray.push(siblings[i]);
+      }
+    }
+  
+    if (children != null) {
+      for(let i = 0; i < children.length; i ++){
+        newArray.push(children[i]);
+        }
+      }
+  
+    if (spouse != null) {
+      for(let i = 0; i < spouse.length; i ++){
+      newArray.push(spouse[i]);
+      }
+    }
+  
+    if (parents != null) {
+      for(let i = 0; i < parents.length; i ++) {
+        newArray.push(parents[i]);
+      }
+    }
+  
+    return newArray;
+  }
+  
   // searching for parents
   function findParents(person, people) {
     let newArrayParents = people.filter(function(el) {
